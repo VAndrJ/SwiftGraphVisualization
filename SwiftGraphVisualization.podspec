@@ -18,4 +18,6 @@ Pod::Spec.new do |s|
   s.source_files = 'SwiftGraphVisualization/Classes/**/*'
 
   s.frameworks = 'UIKit'
+
+  s.swift_versions = '5.9'
 end
