@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '13.0'
+
+target 'SwiftGraphVisualization_Example' do
+  pod 'SwiftGraphVisualization', :path => '../'
+
+  target 'SwiftGraphVisualization_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
