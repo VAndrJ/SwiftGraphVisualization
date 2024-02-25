@@ -17,12 +17,10 @@ let package = Package(
             targets: ["SwiftGraphVisualization"]
         ),
     ],
-    dependencies: [
-    ],
     targets: [
         .target(
             name: "SwiftGraphVisualization",
-            dependencies: [],
+            path: "SwiftGraphVisualization/Classes",
             swiftSettings: settings
         ),
     ]
