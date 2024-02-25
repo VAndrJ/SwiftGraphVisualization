@@ -5,6 +5,8 @@
 //  Created by VAndrJ on 22.02.2024.
 //
 
+import Foundation
+
 public class Graph {
     public var count: Int { _nodes.count }
     public var nodes: [Node] { _nodes }
