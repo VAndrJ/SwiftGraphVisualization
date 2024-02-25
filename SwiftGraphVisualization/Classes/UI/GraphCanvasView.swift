@@ -12,6 +12,12 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
     public let graph: Graph
     public let graphView: GraphDrawingView
     public let algorithm: BuchheimsWalkerAlgorithm
+    public var pathConfigurationBlock: ((UIBezierPath) -> Void)? {
+        didSet { updateGraphPath() }
+    }
+    public var linesConfiguration: LinesConfiguration {
+        didSet { updateGraphPath() }
+    }
 
     var cHeight: NSLayoutConstraint?
     var cWidth: NSLayoutConstraint?
@@ -22,10 +28,10 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         graph: Graph,
         algorithm: BuchheimsWalkerAlgorithm,
         linesColor: UIColor,
+        linesConfiguration: LinesConfiguration,
         contentInset: UIEdgeInsets = .init(top: 16, left: 16, bottom: 16, right: 16),
-        minimumZoomScale: CGFloat = 0.1,
-        maximumZoomScale: CGFloat = 3,
         shift: CGSize = .zero,
+        pathConfigurationBlock: ((UIBezierPath) -> Void)? = nil,
         nodeViewBuilder: @escaping (Node) -> UIView
     ) {
         self.nodeViewBuilder = nodeViewBuilder
@@ -33,12 +39,13 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         self.graph = graph
         self.graphView = GraphDrawingView(color: linesColor)
         self.shift = shift
+        self.pathConfigurationBlock = pathConfigurationBlock
+        self.linesConfiguration = linesConfiguration
 
         super.init(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
 
-        // TODO: - Dynamic on graph changes
-        self.minimumZoomScale = minimumZoomScale
-        self.maximumZoomScale = maximumZoomScale
+        self.minimumZoomScale = 0.1
+        self.maximumZoomScale = 3
         self.contentInset = contentInset
         alwaysBounceVertical = true
         alwaysBounceHorizontal = true
@@ -55,6 +62,12 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
     }
 
     public func update() {
+        runAlgorithm()
+        updateGraphPath()
+        updateGraphViews()
+    }
+
+    func runAlgorithm() {
         let size = algorithm.run(
             graph: graph,
             shiftX: shift.width,
@@ -62,10 +75,19 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         )
         cHeight?.constant = size.height
         cWidth?.constant = size.width
-        graphView.path = UIBezierPath(
+    }
+
+    func updateGraphPath() {
+        let path = UIBezierPath(
             configuration: algorithm.configuration,
-            graph: graph
+            graph: graph,
+            linesConfiguration: linesConfiguration
         )
+        pathConfigurationBlock?(path)
+        graphView.path = path
+    }
+
+    func updateGraphViews() {
         // TODO: - Diff & update existing
         graphView.nodesViews = graph.nodes.map { nodeViewBuilder($0) }
         layoutIfNeeded()

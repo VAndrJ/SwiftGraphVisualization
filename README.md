@@ -1,8 +1,13 @@
 # SwiftGraphVisualization
 
-[![Version](https://img.shields.io/cocoapods/v/SwiftGraphVisualization.svg?style=flat)](https://cocoapods.org/pods/SwiftGraphVisualization)
 [![License](https://img.shields.io/cocoapods/l/SwiftGraphVisualization.svg?style=flat)](https://cocoapods.org/pods/SwiftGraphVisualization)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftGraphVisualization.svg?style=flat)](https://cocoapods.org/pods/SwiftGraphVisualization)
+
+
+
+[![Version](https://img.shields.io/cocoapods/v/SwiftGraphVisualization.svg?style=flat)](https://cocoapods.org/pods/SwiftGraphVisualization)
+[![SPM](https://img.shields.io/badge/SPM-compatible-limegreen.svg?style=flat)](https://github.com/apple/swift-package-manager)
+&nbsp;[![Language](https://img.shields.io/badge/language-Swift-orangered.svg?style=flat)](https://cocoapods.org/pods/SwiftGraphVisualization)
 
 ## Example
 
@@ -22,6 +27,14 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'SwiftGraphVisualization'
+```
+
+
+SwiftGraphVisualization is available through [SPM](https://github.com/apple/swift-package-manager). To install
+it, simply add to your Package Dependencies:
+
+```
+https://github.com/VAndrJ/SwiftGraphVisualization.git
 ```
 
 ## Author
