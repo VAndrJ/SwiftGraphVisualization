@@ -51,7 +51,7 @@
 		7D7DD455ABF3B17D358449F9 /* Pods-SwiftGraphVisualization_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGraphVisualization_Example.release.xcconfig"; path = "Target Support Files/Pods-SwiftGraphVisualization_Example/Pods-SwiftGraphVisualization_Example.release.xcconfig"; sourceTree = "<group>"; };
 		988729AEDE8A2B43567815D6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		9F5E6D9A1C67C599710B6DB1 /* Pods-SwiftGraphVisualization_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftGraphVisualization_Tests.release.xcconfig"; path = "Target Support Files/Pods-SwiftGraphVisualization_Tests/Pods-SwiftGraphVisualization_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		A38499D52B8B47A2009D2348 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		A30ED5F82B8B4B1C00A15E0A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		A38AC8632B88AA6B00812404 /* NodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeView.swift; sourceTree = "<group>"; };
 		A38AC8652B88AA7A00812404 /* NumberNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNodeView.swift; sourceTree = "<group>"; };
 		A38AC8672B88AD3700812404 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
@@ -168,6 +168,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				A30ED5F82B8B4B1C00A15E0A /* Package.swift */,
 				46B3DA4C2E4FC7FA23E9FF2A /* SwiftGraphVisualization.podspec */,
 				988729AEDE8A2B43567815D6 /* README.md */,
 				AE9B38FFAC3E1CDF01F5122B /* LICENSE */,
@@ -514,6 +515,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -535,6 +537,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
