@@ -13,10 +13,10 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
     public let graphView: GraphDrawingView
     public let algorithm: BuchheimsWalkerAlgorithm
     public var pathConfigurationBlock: ((UIBezierPath) -> Void)? {
-        didSet { updateGraph() }
+        didSet { updateGraphPath() }
     }
     public var linesConfiguration: LinesConfiguration {
-        didSet { updateGraph() }
+        didSet { updateGraphPath() }
     }
 
     var cHeight: NSLayoutConstraint?
@@ -44,7 +44,6 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
 
         super.init(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
 
-        // TODO: - Dynamic on graph changes
         self.minimumZoomScale = 0.1
         self.maximumZoomScale = 3
         self.contentInset = contentInset
@@ -64,7 +63,8 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
 
     public func update() {
         runAlgorithm()
-        updateGraph()
+        updateGraphPath()
+        updateGraphViews()
     }
 
     func runAlgorithm() {
@@ -77,7 +77,7 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         cWidth?.constant = size.width
     }
 
-    func updateGraph() {
+    func updateGraphPath() {
         let path = UIBezierPath(
             configuration: algorithm.configuration,
             graph: graph,
@@ -85,6 +85,9 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         )
         pathConfigurationBlock?(path)
         graphView.path = path
+    }
+
+    func updateGraphViews() {
         // TODO: - Diff & update existing
         graphView.nodesViews = graph.nodes.map { nodeViewBuilder($0) }
         layoutIfNeeded()
