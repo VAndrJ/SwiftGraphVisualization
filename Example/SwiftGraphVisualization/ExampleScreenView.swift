@@ -15,7 +15,7 @@ class ExampleScreenView: ControllerView {
         graph: graph,
         algorithm: BuchheimsWalkerAlgorithm(configuration: .init()),
         linesColor: .systemBlue,
-        linesConfiguration: .rightAngles,
+        linesConfiguration: .rightAngles(anchor: 0.4),
         pathConfigurationBlock: { path in
             path.lineWidth = 4
             path.lineJoinStyle = .round
