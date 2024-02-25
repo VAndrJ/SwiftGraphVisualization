@@ -1,5 +1,5 @@
 PODS:
-  - SwiftGraphVisualization (1.0.0)
+  - SwiftGraphVisualization (1.0.2)
 
 DEPENDENCIES:
   - SwiftGraphVisualization (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  SwiftGraphVisualization: 404acffdbdaea00381314dcce5ee498521b03673
+  SwiftGraphVisualization: 57707df022c59222d662e820ebaa524e41c9af32
 
 PODFILE CHECKSUM: a9ffffb0a11b2d41569828ad1d48610a8b5263d6
 
