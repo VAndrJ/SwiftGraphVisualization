@@ -10,11 +10,17 @@ import UIKit
 import SwiftGraphVisualization
 
 class ExampleScreenView: ControllerView {
-    let graph = Graph()
-    lazy var graphCanvasView = GraphCanvasView(
+    private let graph = Graph()
+    private lazy var graphCanvasView = GraphCanvasView(
         graph: graph,
         algorithm: BuchheimsWalkerAlgorithm(configuration: .init()),
         linesColor: .systemBlue,
+        linesConfiguration: .rightAngles,
+        pathConfigurationBlock: { path in
+            path.lineWidth = 4
+            path.lineJoinStyle = .round
+            path.lineCapStyle = .round
+        },
         nodeViewBuilder: { [weak self] node in
             switch node {
             case let node as NumberNode:
@@ -53,7 +59,7 @@ class ExampleScreenView: ControllerView {
         self?.changeSpacing(.vertical(.decrease))
     }
     // TBD
-    let presentSwiftUIExampleButton: UIButton = {
+    private let presentSwiftUIExampleButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("SwiftUI Example", for: .normal)
 
@@ -110,13 +116,14 @@ class ExampleScreenView: ControllerView {
         )
     }
 
+    // TODO: -
     private func remove(node: Node) {
         dump(node)
     }
 
     // MARK: - Settings
 
-    enum SpacingChange {
+    private enum SpacingChange {
         enum Operation {
             case increase
             case decrease
@@ -154,7 +161,7 @@ class ExampleScreenView: ControllerView {
         updateSettingsIndication()
     }
 
-    func updateSettingsIndication() {
+    private func updateSettingsIndication() {
         orientationTopToBottomButton.tintColor = graphCanvasView.configuration.orientation == .topToBottom ? .systemGreen : .systemBlue
         orientationBottomToTopButton.tintColor = graphCanvasView.configuration.orientation == .bottomToTop ? .systemGreen : .systemBlue
         orientationLeftToRightButton.tintColor = graphCanvasView.configuration.orientation == .leftToRight ? .systemGreen : .systemBlue
