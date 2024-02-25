@@ -8,7 +8,7 @@
 import UIKit
 
 // TBD
-public enum LineConfiguration {
+public enum LinesConfiguration {
     case rightAngles
 }
 
@@ -17,7 +17,7 @@ public extension UIBezierPath {
     convenience init(
         configuration: BuchheimsWalkerConfiguration,
         graph: Graph,
-        lineConfiguration: LineConfiguration = .rightAngles
+        linesConfiguration: LinesConfiguration = .rightAngles
     ) {
         self.init()
 
@@ -25,7 +25,7 @@ public extension UIBezierPath {
             orientation: configuration.orientation,
             spacing: configuration.levelSpacing,
             graph: graph,
-            lineConfiguration: lineConfiguration
+            linesConfiguration: linesConfiguration
         )
     }
 
@@ -33,7 +33,7 @@ public extension UIBezierPath {
         orientation: GraphOrientation,
         spacing: CGFloat,
         graph: Graph,
-        lineConfiguration: LineConfiguration = .rightAngles
+        linesConfiguration: LinesConfiguration = .rightAngles
     ) {
         self.init()
 
@@ -75,7 +75,7 @@ extension UIBezierPath {
         orientation: GraphOrientation,
         spacing: CGFloat,
         graph: Graph,
-        lineConfiguration: LineConfiguration = .rightAngles
+        lineConfiguration: LinesConfiguration = .rightAngles
     ) -> [(path: UIBezierPath, color: UIColor)] {
         []
     }
