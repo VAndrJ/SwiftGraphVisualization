@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Graph {
+public class Graph: @unchecked Sendable {
     public var count: Int { _nodes.count }
     public var nodes: [Node] { _nodes }
     public var edges: [Edge] { _edges }
