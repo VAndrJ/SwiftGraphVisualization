@@ -22,19 +22,36 @@ class SettingsButton: UIButton {
 
     var onTap: (() -> Void)?
 
-    convenience init(kind: Kind, onTap: @escaping () -> Void) {
-        self.init(icon: kind.rawValue, onTap: onTap)
+    convenience init(
+        kind: Kind,
+        width: CGFloat? = 64,
+        height: CGFloat? = 64,
+        onTap: @escaping () -> Void
+    ) {
+        self.init(
+            icon: kind.rawValue,
+            width: width,
+            height: height,
+            onTap: onTap
+        )
     }
 
-    convenience init(icon: String, onTap: @escaping () -> Void) {
+    convenience init(
+        icon: String,
+        width: CGFloat? = 64,
+        height: CGFloat? = 64,
+        onTap: @escaping () -> Void
+    ) {
         self.init(type: .system)
 
         self.onTap = onTap
         setImage(UIImage(systemName: icon), for: .normal)
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 64).apply { $0.priority = .init(999) },
-            heightAnchor.constraint(equalToConstant: 64).apply { $0.priority = .init(999) },
-        ])
+        if let width {
+            widthAnchor.constraint(equalToConstant: width).apply { $0.priority = .init(999) }.isActive = true
+        }
+        if let height {
+            heightAnchor.constraint(equalToConstant: height).apply { $0.priority = .init(999) }.isActive = true
+        }
         addTarget(self, action: #selector(onButtonTap), for: .touchUpInside)
     }
 

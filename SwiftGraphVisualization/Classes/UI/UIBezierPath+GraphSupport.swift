@@ -7,7 +7,6 @@
 
 import UIKit
 
-// TBD
 public enum LinesConfiguration {
     case straight
     case rightAngles(anchor: CGFloat = 0.5)
