@@ -109,9 +109,8 @@ class ExampleScreenView: ControllerView {
         )
     }
 
-    // TODO: -
     private func remove(node: Node) {
-        dump(node)
+        graph.remove(node: node)
     }
 
     // MARK: - Settings

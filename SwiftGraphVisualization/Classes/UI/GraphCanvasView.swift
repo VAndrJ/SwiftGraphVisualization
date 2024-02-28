@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
+open class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
     public var configuration: BuchheimsWalkerConfiguration { algorithm.configuration }
     public let graph: Graph
     public let graphView: GraphDrawingView
@@ -18,6 +18,7 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
     public var linesConfiguration: LinesConfiguration {
         didSet { updateGraphPath() }
     }
+    public private(set) var nodesDict: [Node: UIView] = [:]
 
     var cHeight: NSLayoutConstraint?
     var cWidth: NSLayoutConstraint?
@@ -44,30 +45,24 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
 
         super.init(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
 
-        self.minimumZoomScale = 0.1
-        self.maximumZoomScale = 3
         self.contentInset = contentInset
-        alwaysBounceVertical = true
-        alwaysBounceHorizontal = true
-        contentInsetAdjustmentBehavior = .never
-        delegate = self
         addElements()
-        graph.add(didChangedBlock: { [weak self] in 
-            self?.update()
-        })
+        configure()
+        bind()
     }
 
+    @available(*, unavailable)
     public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func update() {
+    open func update() {
         runAlgorithm()
         updateGraphPath()
         updateGraphViews()
     }
 
-    func runAlgorithm() {
+    open func runAlgorithm() {
         let size = algorithm.run(
             graph: graph,
             shiftX: shift.width,
@@ -77,7 +72,7 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         cWidth?.constant = size.width
     }
 
-    func updateGraphPath() {
+    open func updateGraphPath() {
         let path = UIBezierPath(
             configuration: algorithm.configuration,
             graph: graph,
@@ -87,13 +82,42 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         graphView.path = path
     }
 
-    func updateGraphViews() {
-        // TODO: - Diff & update existing
-        graphView.nodesViews = graph.nodes.map { nodeViewBuilder($0) }
+    open func updateGraphViews() {
+        let existingNodes = Set(nodesDict.keys)
+        let newNodes = Set(graph.nodes)
+        let nodesToRemove = existingNodes.subtracting(newNodes)
+        let nodesToAdd = newNodes.subtracting(existingNodes)
+        let nodesToUpdate = existingNodes.intersection(newNodes)
+        nodesToRemove.forEach {
+            nodesDict.removeValue(forKey: $0)?.removeFromSuperview()
+        }
+        nodesToUpdate.forEach {
+            nodesDict[$0]?.frame = .init(origin: $0.origin, size: $0.size)
+        }
+        nodesToAdd.forEach {
+            let nodeView = nodeViewBuilder($0)
+            nodesDict[$0] = nodeView
+            graphView.addSubview(nodeView)
+        }
         layoutIfNeeded()
     }
 
-    private func addElements() {
+    open func bind() {
+        delegate = self
+        graph.add(didChangedBlock: { [weak self] in
+            self?.update()
+        })
+    }
+
+    open func configure() {
+        minimumZoomScale = 0.1
+        maximumZoomScale = 3
+        alwaysBounceVertical = true
+        alwaysBounceHorizontal = true
+        contentInsetAdjustmentBehavior = .never
+    }
+
+    open func addElements() {
         graphView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(graphView)
         let cHeight = graphView.heightAnchor.constraint(equalToConstant: 0)
@@ -109,6 +133,8 @@ public class GraphCanvasView: UIScrollView, UIScrollViewDelegate {
         self.cHeight = cHeight
         self.cWidth = cWidth
     }
+
+    // MARK: - UIScrollViewDelegate
 
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         graphView
