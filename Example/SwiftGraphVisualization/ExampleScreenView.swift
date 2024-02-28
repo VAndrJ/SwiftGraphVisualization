@@ -58,13 +58,6 @@ class ExampleScreenView: ControllerView {
     private lazy var spacingVerticalDecreaseButton = SettingsButton(kind: .verticalDecrease) { [weak self] in
         self?.changeSpacing(.vertical(.decrease))
     }
-    // TBD
-    private let presentSwiftUIExampleButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("SwiftUI Example", for: .normal)
-
-        return button
-    }()
 
     override init() {
 
@@ -116,9 +109,8 @@ class ExampleScreenView: ControllerView {
         )
     }
 
-    // TODO: -
     private func remove(node: Node) {
-        dump(node)
+        graph.remove(node: node)
     }
 
     // MARK: - Settings

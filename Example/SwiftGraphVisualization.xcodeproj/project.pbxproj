@@ -17,6 +17,7 @@
 		A38AC8662B88AA7A00812404 /* NumberNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AC8652B88AA7A00812404 /* NumberNodeView.swift */; };
 		A38AC8682B88AD3700812404 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AC8672B88AD3700812404 /* SettingsButton.swift */; };
 		A3B31AE92B8899E30014C1CB /* NSObject+Applyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B31AE82B8899E30014C1CB /* NSObject+Applyable.swift */; };
+		A3D640D72B8D2201005C1D3E /* TextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D640D62B8D2201005C1D3E /* TextButton.swift */; };
 		A3DDBCA02B87E00600DC9D8C /* ExampleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDBC9F2B87E00600DC9D8C /* ExampleScreenView.swift */; };
 		A3DDBCA22B87E66C00DC9D8C /* UIView+Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDBCA12B87E66C00DC9D8C /* UIView+Support.swift */; };
 		A3DDBCA42B87F6C000DC9D8C /* NumberNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DDBCA32B87F6C000DC9D8C /* NumberNode.swift */; };
@@ -56,6 +57,7 @@
 		A38AC8652B88AA7A00812404 /* NumberNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNodeView.swift; sourceTree = "<group>"; };
 		A38AC8672B88AD3700812404 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		A3B31AE82B8899E30014C1CB /* NSObject+Applyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Applyable.swift"; sourceTree = "<group>"; };
+		A3D640D62B8D2201005C1D3E /* TextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButton.swift; sourceTree = "<group>"; };
 		A3DDBC9F2B87E00600DC9D8C /* ExampleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleScreenView.swift; sourceTree = "<group>"; };
 		A3DDBCA12B87E66C00DC9D8C /* UIView+Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Support.swift"; sourceTree = "<group>"; };
 		A3DDBCA32B87F6C000DC9D8C /* NumberNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberNode.swift; sourceTree = "<group>"; };
@@ -125,7 +127,6 @@
 				A38AC8632B88AA6B00812404 /* NodeView.swift */,
 				A3DDBCA32B87F6C000DC9D8C /* NumberNode.swift */,
 				A38AC8652B88AA7A00812404 /* NumberNodeView.swift */,
-				A38AC8672B88AD3700812404 /* SettingsButton.swift */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for SwiftGraphVisualization";
@@ -144,6 +145,8 @@
 				A3DDBCAB2B8892F900DC9D8C /* RowStackView.swift */,
 				A3DDBCAD2B88938C00DC9D8C /* ColumnStackView.swift */,
 				A3B31AE82B8899E30014C1CB /* NSObject+Applyable.swift */,
+				A38AC8672B88AD3700812404 /* SettingsButton.swift */,
+				A3D640D62B8D2201005C1D3E /* TextButton.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				A3B31AE92B8899E30014C1CB /* NSObject+Applyable.swift in Sources */,
 				A38AC8662B88AA7A00812404 /* NumberNodeView.swift in Sources */,
 				A3DDBCA22B87E66C00DC9D8C /* UIView+Support.swift in Sources */,
+				A3D640D72B8D2201005C1D3E /* TextButton.swift in Sources */,
 				A3DDBCAE2B88938C00DC9D8C /* ColumnStackView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				A3DDBCAC2B8892F900DC9D8C /* RowStackView.swift in Sources */,

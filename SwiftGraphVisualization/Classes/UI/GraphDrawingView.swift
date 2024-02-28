@@ -11,12 +11,6 @@ open class GraphDrawingView: UIView {
     public var path: UIBezierPath? {
         didSet { setNeedsDisplay() }
     }
-    public var nodesViews: [UIView] = [] {
-        didSet {
-            oldValue.forEach { $0.removeFromSuperview() }
-            nodesViews.forEach { addSubview($0) }
-        }
-    }
     public var color: UIColor {
         didSet { setNeedsDisplay() }
     }
